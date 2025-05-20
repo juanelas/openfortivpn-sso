@@ -10,6 +10,7 @@ Usage: $scriptname [opts]
 Installs openfortivpn-sso
 
 Options
+  -h, --help             Show this help message and exit
   -p, --prefix <prefix>  An optional prefix where to install openfortivpn-sso.
                          If not provided, it defaults to /usr/local/bin
   -u, --update           Update openfortivpn and openfortivpn-webview to the

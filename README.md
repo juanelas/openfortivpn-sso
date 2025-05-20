@@ -18,30 +18,33 @@ Clone or download the repository files to your system.
 
 ### 2. Run the installer
 
-By default, the script installs `openfortivpn-sso` to `/usr/local/bin` and will prompt to install or update dependencies if needed.
+By default, `install.sh` script installs `openfortivpn-sso` to `/usr/local/bin` and will prompt to install or update dependencies if needed. In any case the following options are available:
 
-```sh
-sudo ./install.sh
-```
-
-#### Options
-
+- `-h, --help`: Show help message
 - `-p, --prefix <prefix>`: Install to a custom directory (e.g., `$HOME/.local/bin`)
-- `-u, --update`: Update `openfortivpn` and `openfortivpn-webview` to the latest versions
+- `-u, --update`: Force updating `openfortivpn` and `openfortivpn-webview` to the latest versions
 - `-y, --yes`: Assume "yes" to all prompts (for automation)
 
-**Examples:**
+#### Installation examples
 
-Install to default location and install dependencies if needed:
+Assuming you call `install.sh` from the project's directory.
+
+Install to default location installing dependencies if needed (prompts the user for confirmation in every step):
 
 ```sh
-sudo ./install.sh --update
+./install.sh
 ```
 
-Install to a custom location:
+Install to default location installing dependencies if needed (no questions)
 
 ```sh
-./install.sh -p $HOME/.local/bin
+./install.sh -y
+```
+
+Install to a custom location and install or update `openfortivpn` and `openfortivpn-webview` to the latest version available:
+
+```sh
+./install.sh -p $HOME/.local/bin --update
 ```
 
 ## Usage
@@ -64,12 +67,12 @@ openfortivpn-sso vpngateway.example.com
 
 ### Proxy Support
 
-If you need to use an HTTP proxy:
+If you need to use an HTTP proxy to get to the SSO website:
 
 - **AppImage version**:
 
   ```sh
-  openfortivpn-sso host[:port] --proxy-server=proxy.example.com:8080 [other_webview_opts] [-- openfortivpn_opts]
+  openfortivpn-sso host[:port] --proxy-server=proxy.example.com:8080 [other_openfortivpn-webview_opts] [-- openfortivpn_opts]
   ```
 
 - **Deb version**:
@@ -98,16 +101,3 @@ The installer can create an `openfortivpn` group and add your user, allowing pas
 - Remove a user:  
   `sudo gpasswd -d username openfortivpn`
 
-## Troubleshooting
-
-- Ensure `openfortivpn` version is **greater than 1.19.0**.
-- If dependencies are missing, rerun the installer with `-u` or install them manually.
-- For more help, run:
-
-  ```sh
-  openfortivpn-sso --help
-  ```
-
-## License
-
-See the respective licenses for `openfortivpn` and `openfortivpn-webview`.
