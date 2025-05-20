@@ -205,7 +205,7 @@ confirm() {
 }
 
 ##############################################################################
-# Check that openfortivpn > 1.19.0 is installed
+# openfortivpn
 ##############################################################################
 
 compare_versions() {
@@ -431,8 +431,7 @@ Update .deb?" yes; then
         exit 1
       }
     fi
-  fi
-  if command -v apt-get &>/dev/null; then
+  elif command -v apt-get &>/dev/null; then
     if confirm "
   openfortivpn-webview is provided as an AppImage or as a .deb package.
   In Ubuntu/Debian -based distros it is recommended to use the .deb version of openfortivpn-webview.
